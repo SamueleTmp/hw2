@@ -16,8 +16,7 @@ class RegisterController extends Controller {
     protected function create(Request $request)
     {
         $request->all();
-      //$propic = $request->has('image') ? $request->file('image') : null;
-
+      
        
         if($this->countErrors($request->all()) == 0) 
         {
@@ -32,7 +31,6 @@ class RegisterController extends Controller {
             $pic->username = $request->username;
             $pic->picprofile = file_get_contents($request->file('image'));
             
-         //   'propic' => $propic ?? null,
             if ($user->save() && $pic->save()) {
                 Session::put('username', $request->username);
                 return redirect('home');
@@ -55,7 +53,7 @@ class RegisterController extends Controller {
         $cont_error = 0 ;
 
         
-        # USERNAME
+        
         // Controlla che l'username rispetti il pattern specificato
         if(!preg_match('/^[a-zA-Z0-9_]{1,15}$/', $data['username'])) {
             $cont_error++;
@@ -66,15 +64,16 @@ class RegisterController extends Controller {
             }
 
         }
-        # PASSWORD
+        
+        // Controlla che la password rispetti il pattern specificato
         if (strlen($data["pass"]) < 5) {
             $cont_error++;
         } 
-        # CONFERMA PASSWORD
+        // CONFERMA PASSWORD
         if (strcmp($data["pass"], $data["conf_pass"]) != 0) {
             $cont_error++;
         }
-        # EMAIL
+        // EMAIL
         if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
             $cont_error++;
         }

@@ -86,7 +86,8 @@ Route::get('/profilo/upload_post_profilo_altri_utenti', "App\Http\Controllers\Pr
 
 //Necessarie per il profilo personale
 Route::get('/profilo', function(){
-    return view('profilo_personale');
+    if(Session::get('username'))
+        return view('profilo_personale');
 });
 
 Route::get('/profilo/info_utente_profilo', "App\Http\Controllers\ProfiloPersonaleController@info_utente");

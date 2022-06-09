@@ -19,7 +19,10 @@ class HomepageController extends Controller {
 
     protected function info_utente(){
 
-        
+        if(!Session::get('username')){
+            return redirect('/');
+        }
+
         $picprofile = PicProfile::where('username', Session::get('username'))->first();
 
         $picprofile = base64_encode($picprofile->picprofile);
@@ -49,6 +52,10 @@ class HomepageController extends Controller {
  
     
     protected function upload_post(){
+
+        if(!Session::get('username')){
+            return redirect('/');
+        }
 
         //array che passo al file json
         $array_finale = array();
@@ -165,6 +172,10 @@ class HomepageController extends Controller {
 
     protected function like($id_post){
 
+        if(!Session::get('username')){
+            return redirect('/');
+        }
+
         $like = new Like;
 
         $like->id_post = $id_post;
@@ -176,6 +187,10 @@ class HomepageController extends Controller {
 
     protected function unlike($id_post){
 
+        if(!Session::get('username')){
+            return redirect('/');
+        }
+
         $unlike = Like::where('username', Session::get('username'))->where('id_post', $id_post);
 
         $unlike->delete();
@@ -183,6 +198,10 @@ class HomepageController extends Controller {
     }
 
     protected function cerca_film($nome_film){
+
+        if(!Session::get('username')){
+            return redirect('/');
+        }
 
         $curl = curl_init();
 
@@ -223,6 +242,10 @@ class HomepageController extends Controller {
 
     protected function cerca_utente($nome_utente){
 
+        if(!Session::get('username')){
+            return redirect('/');
+        }
+        
         $array = array();
 
         $user = Utente::where('username', $nome_utente)->first();

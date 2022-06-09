@@ -19,7 +19,10 @@ class ProfiloAltruiController extends Controller {
 
     protected function info_utente(){
 
-        // $utente = Utente::where('username', Session::get('username'))->first();
+        if(!Session::get('username')){
+            return redirect('/');
+        }
+
          
          $picprofile = PicProfile::where('username', Session::get('ricerca_utenti'))->first();
  
@@ -38,6 +41,10 @@ class ProfiloAltruiController extends Controller {
     }
 
     protected function upload_post(){
+
+        if(!Session::get('username')){
+            return redirect('/');
+        }
 
         //array che passo al file json
         $array_finale = array();
