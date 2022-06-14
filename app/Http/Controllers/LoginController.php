@@ -16,12 +16,12 @@ class LoginController extends Controller {
     {
         $request->all();
     
-        $user = Utente::where("username", $request->username)->first();
-        $pass = Utente::where("pass", $request->pass)->first();
+        $check = Utente::where("username", $request->username)->where("pass", $request->pass)->first();
+        
     
      
     
-        if (($user != null) && ($pass !=null)) 
+        if ($check!=null) 
         {
                Session::put('username', $request->username);
                return redirect('home');
