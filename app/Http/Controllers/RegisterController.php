@@ -49,7 +49,6 @@ class RegisterController extends Controller {
 
     private function countErrors($data) {
 
-        //$error = array();
         $cont_error = 0 ;
 
         
@@ -69,11 +68,11 @@ class RegisterController extends Controller {
         if (strlen($data["pass"]) < 5) {
             $cont_error++;
         } 
-        // CONFERMA PASSWORD
+        //Conf_pass
         if (strcmp($data["pass"], $data["conf_pass"]) != 0) {
             $cont_error++;
         }
-        // EMAIL
+        //email
         if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
             $cont_error++;
         }

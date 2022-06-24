@@ -10,8 +10,7 @@ class Like extends Model
     protected $primarykey = ['id_post', 'username'];
     protected $autoincrement = false;
     public $timestamps = false;
-    //protected $keytype = "";
-
+   
     public function user() {
         return $this->belongsTo("App\Models\Utente", 'username');
     }

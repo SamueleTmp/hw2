@@ -60,15 +60,6 @@ function check_username(event)
         p.textContent="";
 
 
-//        let data = {
-  //          username: event.currentTarget.value,
-   //     };
-        
-
-        //Prendo il token CSFR
-        //token = document.querySelector("input[name='_token']");
-        //console.log(token.value);
-
         fetch("/register/username/"+encodeURIComponent(event.currentTarget.value)).then(onResponse).then(onJSON_check_username);
     }
 };

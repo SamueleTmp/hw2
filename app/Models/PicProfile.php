@@ -11,8 +11,7 @@ class PicProfile extends Model
     protected $primarykey ='username';
     protected $autoincrement = false;
     public $timestamps = false;
-    protected $keytype = "string";
-
+   
    
     public function user() {
         return $this->belongsTo('App\Models\Utente', 'username');

@@ -190,7 +190,7 @@ function unliked(event)
 
     img.addEventListener('click', liked);
 
-    //Prendo 
+
     console.log(p.parentNode.parentNode.dataset.id);
     let id_post = p.parentNode.parentNode.dataset.id;
 

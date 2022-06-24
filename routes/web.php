@@ -28,11 +28,6 @@ Route::get('/', function () {
     }
 });
 
-//Route::get("/login", "App\Http\Controllers\LoginController@login");
-//Route::post("/logout", "App\Http\Controllers\LoginController@logout");
-
-
-
 
 //Necessarie per il register
 Route::get('/register', function(){

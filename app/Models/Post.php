@@ -8,7 +8,6 @@ class Post extends Model
     protected $table='published_post';
 
     protected $primarykey ='id';
-   // protected $autoIncrement = false;
     public $timestamps = false;
     protected $keytype = "int";
 

@@ -11,8 +11,7 @@ class Utente extends Model
     protected $autoincrement = false;
     public $timestamps = false;
     protected $keytype = "string";
-    //protected $fillable = 'username';
-
+    
     public function posts() {
         return $this->hasMany("App\Models\Post", 'utente');
     }
